@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomSayings", "RandomSayings\RandomSayings.csproj", "{B2599E38-EEC8-4642-875D-F107CB8FA548}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpHelper", "HttpHelper\HttpHelper.csproj", "{2ECB3617-36FC-45D4-85AB-2EC7943FECD5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B2599E38-EEC8-4642-875D-F107CB8FA548}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2599E38-EEC8-4642-875D-F107CB8FA548}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2599E38-EEC8-4642-875D-F107CB8FA548}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2599E38-EEC8-4642-875D-F107CB8FA548}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ECB3617-36FC-45D4-85AB-2EC7943FECD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ECB3617-36FC-45D4-85AB-2EC7943FECD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ECB3617-36FC-45D4-85AB-2EC7943FECD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ECB3617-36FC-45D4-85AB-2EC7943FECD5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
