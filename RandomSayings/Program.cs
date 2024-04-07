@@ -7,6 +7,11 @@ class Program
 {
     static void Main(string[] args)
     {
+        if (args.Length == 0 || args[0].Equals("-h") || args[0].Equals("--help"))
+        {
+            DisplayHelp();
+            return;
+        }
         RestClientHelper _RestClientHelper = new RestClientHelper("https://quotesapi.divsphere.net");
         
         string endpoint = "";
@@ -70,5 +75,15 @@ class Program
             Thread.Sleep(sleepTime);
             Console.Clear();
         }
+    }
+    static void DisplayHelp()
+    {
+        Console.WriteLine("Usage: RandomSayings [OPTIONS]");
+        Console.WriteLine("Options:");
+        Console.WriteLine("-q\t\tGet random quotes");
+        Console.WriteLine("-r\t\tGet random rizzes");
+        Console.WriteLine("-i\t\tGet random insults");
+        Console.WriteLine("-t <time>\tSet the sleep time in seconds (default: 3 seconds)");
+        Console.WriteLine("-h, --help\tDisplay this help message");
     }
 }
