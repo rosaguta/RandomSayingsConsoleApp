@@ -89,6 +89,8 @@ class Program
             Console.WriteLine(response);
             Thread.Sleep(sleepTime);
             Console.Clear();
+            Console.Write("\x1b[3J");
+            
         }
     }
 
@@ -111,6 +113,7 @@ class Program
             }
             Thread.Sleep(sleepTime);
             Console.Clear();
+            Console.Write("\x1b[3J");
         }
     }
 
