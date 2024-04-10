@@ -122,14 +122,6 @@ class Program
         return $"#{((int)red):X2}{((int)green):X2}{((int)blue):X2}";
     }
     
-    static void ConsoleWriteRainbow(string? text)
-    {
-        
-        double frequency = 0.3; // Adjust frequency as needed
-        double index = 0.0; // Adjust index as needed
-        string color = Rainbow(frequency, index);
-        Console.WriteLine(color);
-    }
     static void DisplayHelp()
     {
         Console.WriteLine("Usage: RandomSayings [OPTIONS]");
@@ -138,6 +130,7 @@ class Program
         Console.WriteLine("-r\t\tGet random rizzes");
         Console.WriteLine("-i\t\tGet random insults");
         Console.WriteLine("-t <time>\tSet the sleep time in seconds (default: 3 seconds)");
+        Console.WriteLine("--rainbow\tEnable Rainbow Mode");
         Console.WriteLine("-h, --help\tDisplay this help message");
     }
 }
