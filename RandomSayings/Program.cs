@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
+using System.Reflection;
 using HttpHelper;
 using RestSharp;
 using System.Threading;
+using Pastel;
 
 class Program
 {
@@ -63,7 +66,7 @@ class Program
         }
         
         if(!rainbowmode){
-        Loop(endpoint, sleepTime, _RestClientHelper);
+            Loop(endpoint, sleepTime, _RestClientHelper);
         }
         else
         {
@@ -91,38 +94,41 @@ class Program
 
     static void RainbowLoop(string endpoint, int sleepTime, RestClientHelper restClientHelper)
     {
-        while (true)
+
+        double i = 0.0;    
+        double frequency = 0.3;
+        while(true)
         {
             string? response = GetRandomSaying(endpoint, restClientHelper);
-            ConsoleWriteRainbow(response);
+            
+            int responselenght = response.Length;
+            for (int l = 0; l < responselenght; l++)
+            {
+                string ColorHex = Rainbow(frequency, i);
+                char letter = response[l];
+                Console.Write(letter.ToString().Pastel(ColorHex));
+                i = i + 0.1;
+            }
             Thread.Sleep(sleepTime);
             Console.Clear();
         }
     }
 
+    public static string Rainbow(double freq, double i)
+    {
+        double red = Math.Sin(freq * i + 0) * 127 + 128;
+        double green = Math.Sin(freq * i + 2 * Math.PI / 3) * 127 + 128;
+        double blue = Math.Sin(freq * i + 4 * Math.PI / 3) * 127 + 128;
+        return $"#{((int)red):X2}{((int)green):X2}{((int)blue):X2}";
+    }
+    
     static void ConsoleWriteRainbow(string? text)
     {
-        // Rainbow colors
-        ConsoleColor[] colors = {
-            ConsoleColor.Red,
-            ConsoleColor.Yellow,
-            ConsoleColor.Green,
-            ConsoleColor.Cyan,
-            ConsoleColor.Blue,
-            ConsoleColor.Magenta
-        };
-
-        int colorIndex = 0;
-
-        // Print text with rainbow coloring
-        foreach (char c in text)
-        {
-            Console.ForegroundColor = colors[colorIndex];
-            Console.Write(c);
-
-            colorIndex = (colorIndex + 1) % colors.Length;
-        }
         
+        double frequency = 0.3; // Adjust frequency as needed
+        double index = 0.0; // Adjust index as needed
+        string color = Rainbow(frequency, index);
+        Console.WriteLine(color);
     }
     static void DisplayHelp()
     {
