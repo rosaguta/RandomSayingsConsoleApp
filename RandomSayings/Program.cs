@@ -9,6 +9,9 @@ using Pastel;
 
 class Program
 {
+    protected static int origRow;
+    protected static int origCol;   
+    
     static void Main(string[] args)
     {
         if (args.Length == 0 || args[0].Equals("-h") || args[0].Equals("--help"))
@@ -21,6 +24,7 @@ class Program
         string endpoint = "";
         int sleepTime = 3000; // Default sleep time
         bool rainbowmode = false;
+        bool animate = false;
 
         for (int i = 0; i < args.Length; i++)
         {
@@ -57,7 +61,9 @@ class Program
                     break;
                 case "--rainbow":
                     rainbowmode = true;
-                    Debug.Write("Rainbow activated");
+                    break;
+                case "-a":
+                    animate = true;
                     break;
                 default:
                     Console.WriteLine($"This option is not implemented yet. Please use -q, -r, or -i.");
@@ -70,9 +76,59 @@ class Program
         }
         else
         {
+            if (animate)
+            {
+                AnimateLoop(endpoint, sleepTime, _RestClientHelper);
+            }
             RainbowLoop(endpoint, sleepTime, _RestClientHelper);
         }
     }
+
+    static void WriteAt()
+    {
+        
+    }
+    static void AnimateLoop(string endpoint, int sleepTime, RestClientHelper restClientHelper)
+    {
+        int spread = 3;
+        int duration = 50;
+        int speed = 24;
+        double j = 0.0;    
+        double frequency = 0.3;
+        double k = 0.0;
+        
+        
+        Console.Clear();
+        Console.Write("\x1b[3J");
+        origRow = Console.CursorTop;
+        origCol = Console.CursorLeft;
+        while(true) 
+        {
+            string? response = GetRandomSaying(endpoint, restClientHelper);
+            int responselenght = response.Length;
+            for (int i = 0; i < duration; i++)
+            {
+                for (int l = 0; l < responselenght; l++)
+                {
+                    string ColorHex = Rainbow(frequency, j);
+                    char letter = response[l];
+                    
+                    Console.SetCursorPosition(origCol+l, origRow);
+                    Console.Write(letter.ToString().Pastel(ColorHex));
+                    j = j + 0.1;
+                }
+                
+                Thread.Sleep(50);
+                k = k + 0.5;
+                j = k;
+            }
+            Thread.Sleep(500);
+            Console.Clear();
+            Console.Write("\x1b[3J");
+        }
+    }
+    
+
 
     static string? GetRandomSaying(string endpoint, RestClientHelper restClientHelper)
     {
