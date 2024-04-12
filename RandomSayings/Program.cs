@@ -94,7 +94,7 @@ class Program
         int duration = 50;
         int speed = 24;
         double j = 0.0;    
-        double frequency = 0.3;
+        double frequency = 0.7;
         double k = 0.0;
         
         
@@ -104,23 +104,41 @@ class Program
         origCol = Console.CursorLeft;
         while(true) 
         {
-            string? response = GetRandomSaying(endpoint, restClientHelper);
+            // string? response = GetRandomSaying(endpoint, restClientHelper);
+            string response = @"dit is een mega coole test voor mn kut -a --rainbow functie ;w;
+dit is een mega coole test voor mn kut -a --rainbow functie ;w;
+dit is een mega coole test voor mn kut -a --rainbow functie ;w;
+dit is een mega coole test voor mn kut -a --rainbow functie ;w;
+dit is een mega coole test voor mn kut -a --rainbow functie ;w; ";
             int responselenght = response.Length;
             for (int i = 0; i < duration; i++)
             {
+                int columnindex = 0;
+                int rowindex = 0;
                 for (int l = 0; l < responselenght; l++)
                 {
-                    string ColorHex = Rainbow(frequency, j);
                     char letter = response[l];
+                    if (letter == '\n')
+                    {
+                        
+                        rowindex++;
+                        k = k + 0.5;
+                        j = k;
+                        columnindex = 0;
+                        
+                        continue;
+                    }
                     
-                    Console.SetCursorPosition(origCol+l, origRow);
+                    string ColorHex = Rainbow(frequency, j);
+                    Console.SetCursorPosition(origCol+columnindex, origRow+rowindex);
                     Console.Write(letter.ToString().Pastel(ColorHex));
                     j = j + 0.1;
+                    columnindex++;
                 }
                 
                 Thread.Sleep(50);
-                k = k + 0.5;
-                j = k;
+                // k = k + 0.5;
+                // j = k;
             }
             Thread.Sleep(500);
             Console.Clear();
