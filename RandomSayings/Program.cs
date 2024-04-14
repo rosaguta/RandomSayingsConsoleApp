@@ -115,17 +115,16 @@ dit is een mega coole test voor mn kut -a --rainbow functie ;w; ";
             {
                 int columnindex = 0;
                 int rowindex = 0;
+                j = k;
                 for (int l = 0; l < responselenght; l++)
                 {
                     char letter = response[l];
                     if (letter == '\n')
                     {
-                        
                         rowindex++;
                         k = k + 0.5;
                         j = k;
                         columnindex = 0;
-                        
                         continue;
                     }
                     
