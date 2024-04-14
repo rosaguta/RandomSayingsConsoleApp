@@ -1,10 +1,5 @@
-﻿using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Reflection;
-using HttpHelper;
+﻿using HttpHelper;
 using RestSharp;
-using System.Threading;
 using Pastel;
 
 class Program
@@ -96,8 +91,8 @@ class Program
         double j = 0.0;    
         double frequency = 0.7;
         double k = 0.0;
-        
-        
+
+        Console.CursorVisible = false;
         Console.Clear();
         Console.Write("\x1b[3J");
         origRow = Console.CursorTop;
@@ -115,6 +110,7 @@ class Program
             {
                 int columnindex = 0;
                 int rowindex = 0;
+
                 j = k;
                 for (int l = 0; l < responselenght; l++)
                 {
@@ -127,17 +123,18 @@ class Program
                         columnindex = 0;
                         continue;
                     }
-                    
                     string ColorHex = Rainbow(frequency, j);
+                    // TODO: CHECK FOR TERMINAL SPACE
                     Console.SetCursorPosition(origCol+columnindex, origRow+rowindex);
                     Console.Write(letter.ToString().Pastel(ColorHex));
                     j = j + 0.1;
                     columnindex++;
                 }
-                
                 Thread.Sleep(50);
-                // k = k + 0.5;
-                // j = k;
+                if(!response.Contains(Environment.NewLine)){
+                    k = k + 0.5;
+                    j = k;
+                }
             }
             Thread.Sleep(500);
             Console.Clear();
