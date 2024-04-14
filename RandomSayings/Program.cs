@@ -104,12 +104,12 @@ class Program
         origCol = Console.CursorLeft;
         while(true) 
         {
-            // string? response = GetRandomSaying(endpoint, restClientHelper);
-            string response = @"dit is een mega coole test voor mn kut -a --rainbow functie ;w;
-dit is een mega coole test voor mn kut -a --rainbow functie ;w;
-dit is een mega coole test voor mn kut -a --rainbow functie ;w;
-dit is een mega coole test voor mn kut -a --rainbow functie ;w;
-dit is een mega coole test voor mn kut -a --rainbow functie ;w; ";
+            string? response = GetRandomSaying(endpoint, restClientHelper);
+//             string response = @"dit is een mega coole test voor mn kut -a --rainbow functie ;w;
+// dit is een mega coole test voor mn kut -a --rainbow functie ;w;
+// dit is een mega coole test voor mn kut -a --rainbow functie ;w;
+// dit is een mega coole test voor mn kut -a --rainbow functie ;w;
+// dit is een mega coole test voor mn kut -a --rainbow functie ;w; ";
             int responselenght = response.Length;
             for (int i = 0; i < duration; i++)
             {
