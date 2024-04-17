@@ -66,7 +66,7 @@ class Program
                     {
                         if (int.TryParse(args[i + 1], out int time))
                         {
-                            animation_duration= int.Parse(time.ToString() + "000");
+                            animation_duration= int.Parse(time.ToString());
                             i++;
                         }
                         else
@@ -132,6 +132,15 @@ class Program
         Console.Write("\x1b[3J");
         origRow = Console.CursorTop;
         origCol = Console.CursorLeft;
+        
+        Console.CancelKeyPress += new ConsoleCancelEventHandler((sender, e) =>
+        {
+            // Reactivate cursor visibility
+            Console.CursorVisible = true;
+            Console.WriteLine("CTRL+C detected. Exiting...");
+            Environment.Exit(0); // You may want to handle this differently based on your needs
+        });
+        
         while(true) 
         {
             string? response = GetRandomSaying(endpoint, restClientHelper);
