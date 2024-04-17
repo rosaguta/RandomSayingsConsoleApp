@@ -134,12 +134,7 @@ class Program
         origCol = Console.CursorLeft;
         while(true) 
         {
-            // string? response = GetRandomSaying(endpoint, restClientHelper);
-                        string response = @"dit is een mega coole test voor mn kut -a --rainbow functie ;w;
-dit is een mega coole test voor mn kut -a --rainbow functie ;w;
-dit is een mega coole test voor mn kut -a --rainbow functie ;w;
-dit is een mega coole test voor mn kut -a --rainbow functie ;w;
-dit is een mega coole test voor mn kut -a --rainbow functie ;w; ";
+            string? response = GetRandomSaying(endpoint, restClientHelper);
             int responselenght = response.Length;
             if(response.Contains('\n')){
                 int AmountSlashNInResponse = response.Count(t => t == '\n');
@@ -237,13 +232,13 @@ dit is een mega coole test voor mn kut -a --rainbow functie ;w; ";
     {
         Console.WriteLine("Usage: RandomSayings [OPTIONS]");
         Console.WriteLine("Options:");
-        Console.WriteLine("-q\t\t\tGet random quotes");
-        Console.WriteLine("-r\t\t\tGet random rizzes");
-        Console.WriteLine("-i\t\t\tGet random insults");
-        Console.WriteLine("-t <time>\t\tSet the sleep time in seconds (default: 3 seconds)");
-        Console.WriteLine("--rainbow\t\tEnable Rainbow Mode");
-        Console.WriteLine("--animation_duration\tSet the animation duration by X value. This value isn't related to time (default: 20");
-        Console.WriteLine("--spread \t\tSet the spread of the rainbow. Lower = more spread (default: 0.5)");
-        Console.WriteLine("-h, --help\t\tDisplay this help message");
+        Console.WriteLine("-q\t\t\t\tGet random quotes");
+        Console.WriteLine("-r\t\t\t\tGet random rizzes");
+        Console.WriteLine("-i\t\t\t\tGet random insults");
+        Console.WriteLine("-t <time>\t\t\tSet the sleep time in seconds (default: 3 seconds)");
+        Console.WriteLine("--rainbow\t\t\tEnable Rainbow Mode");
+        Console.WriteLine("--animation_duration <value> \tSet the animation duration by X value. This value isn't related to time (default: 20)");
+        Console.WriteLine("--spread <value> \t\tSet the spread of the rainbow. Lower = more spread (default: 0.5)");
+        Console.WriteLine("-h, --help\t\t\tDisplay this help message");
     }
 }
