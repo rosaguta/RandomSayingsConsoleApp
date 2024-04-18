@@ -13,12 +13,12 @@ public class RestClientHelper
         Client = new RestClient(BaseRequestAdress);
     }
 
-    public RestResponse ExecuteGetRequest(string endpoint)
+    public string? ExecuteGetRequest(string endpoint)
     {
         var request = new RestRequest($"{BaseRequestAdress}/{endpoint}/random", Method.Get);
         request.AddHeader("Accept", "*/*");
         RestResponse response = Client.Execute(request);
-        return response;
+        return response.Content;
     }
 
 }
