@@ -29,7 +29,7 @@ class Program
             }
             else
             {
-                LoopManager.RainbowLoop(endpoint, sleepTime);
+                LoopManager.RainbowLoop(endpoint, sleepTime, spread);
             }
         }
     }

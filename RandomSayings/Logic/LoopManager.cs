@@ -18,10 +18,9 @@ public static class LoopManager
         }
     }
 
-    public static void RainbowLoop(string endpoint, int sleepTime)
+    public static void RainbowLoop(string endpoint, int sleepTime, double spread)
     {
         double i = 0.0;    
-        double frequency = 0.3;
         while(true)
         {
             string? response = _saying.Get(endpoint);
@@ -29,7 +28,7 @@ public static class LoopManager
             int responselenght = response.Length;
             for (int l = 0; l < responselenght; l++)
             {
-                string ColorHex = Color.Get(frequency, i);
+                string ColorHex = Color.Get(spread, i);
                 char letter = response[l];
                 Console.Write(letter.ToString().Pastel(ColorHex));
                 i = i + 0.1;
@@ -54,10 +53,9 @@ public static class LoopManager
         
         Console.CancelKeyPress += new ConsoleCancelEventHandler((sender, e) =>
         {
-            // Reactivate cursor visibility
             Console.CursorVisible = true;
             Console.WriteLine("CTRL+C detected. Exiting...");
-            Environment.Exit(0); // You may want to handle this differently based on your needs
+            Environment.Exit(0);
         });
         
         while(true) 

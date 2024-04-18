@@ -8,7 +8,7 @@ namespace RandomSayings
         public static (string endpoint, int sleepTime, bool rainbowMode, bool animate, int animationDuration, double spread) ParseArguments(string[] args)
         {
             string endpoint = "";
-            int sleepTime = 3000; // Default sleep time
+            int sleepTime = 3000;
             bool rainbowMode = false;
             bool animate = false;
             int animationDuration = 20;
