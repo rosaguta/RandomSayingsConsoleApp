@@ -147,7 +147,7 @@ class Program
             int responselenght = response.Length;
             if(response.Contains('\n')){
                 int AmountSlashNInResponse = response.Count(t => t == '\n');
-                a = 1.0 / AmountSlashNInResponse;
+                a = 0.75 / AmountSlashNInResponse;
             }
             for (int i = 0; i < AnimDuration; i++)
             {
@@ -166,7 +166,10 @@ class Program
                         continue;
                     }
                     string ColorHex = Rainbow(spread, j);
-                    // TODO: CHECK FOR TERMINAL SPACE
+                    if (Console.WindowWidth <= columnindex){
+                        rowindex++;
+                        columnindex = 0;
+                    }
                     Console.SetCursorPosition(origCol+columnindex, origRow+rowindex);
                     Console.Write(letter.ToString().Pastel(ColorHex));
                     j = j + 0.1;
