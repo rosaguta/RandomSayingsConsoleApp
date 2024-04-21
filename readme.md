@@ -1,1 +1,1 @@
-![](usage.png)
+![](.usage.png)
